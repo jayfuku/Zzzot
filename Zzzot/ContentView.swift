@@ -75,13 +75,7 @@ struct CalendarView: View {
     @State private var username: String = ""
     @State private var editorText: String = ""
     var body: some View {
-        VStack(alignment: .leading, spacing: 20){
-            DatePicker(
-                "Start Date",
-                selection: $date,
-                displayedComponents: [.date]
-            )
-            .datePickerStyle(.graphical)
+        VStack(alignment: .center, spacing: 20){
             DatePicker(
                 "Due Date",
                 selection: $todoDate,
@@ -126,4 +120,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
