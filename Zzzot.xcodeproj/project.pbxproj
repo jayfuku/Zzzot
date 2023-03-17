@@ -14,6 +14,8 @@
 		8F209AA329C51CED00B03475 /* ZzzotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AA229C51CED00B03475 /* ZzzotTests.swift */; };
 		8F209AAD29C51CED00B03475 /* ZzzotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AAC29C51CED00B03475 /* ZzzotUITests.swift */; };
 		8F209AAF29C51CED00B03475 /* ZzzotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AAE29C51CED00B03475 /* ZzzotUITestsLaunchTests.swift */; };
+		8F209ABE29C51ECC00B03475 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 8F209ABD29C51ECC00B03475 /* File */; };
+		8F209AC029C51ED500B03475 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 8F209ABF29C51ED500B03475 /* File */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		8F209AA829C51CED00B03475 /* ZzzotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZzzotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F209AAC29C51CED00B03475 /* ZzzotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZzzotUITests.swift; sourceTree = "<group>"; };
 		8F209AAE29C51CED00B03475 /* ZzzotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZzzotUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8F209ABD29C51ECC00B03475 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		8F209ABF29C51ED500B03475 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 		8F209ABB29C51E8800B03475 /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
+				8F209ABD29C51ECC00B03475 /* File */,
 			);
 			path = Frontend;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 		8F209ABC29C51E9100B03475 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				8F209ABF29C51ED500B03475 /* File */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -247,8 +253,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F209AC029C51ED500B03475 /* File in Resources */,
 				8F209A9929C51CED00B03475 /* Preview Assets.xcassets in Resources */,
 				8F209A9629C51CED00B03475 /* Assets.xcassets in Resources */,
+				8F209ABE29C51ECC00B03475 /* File in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
