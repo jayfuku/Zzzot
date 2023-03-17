@@ -94,6 +94,8 @@
 		8F209A9029C51CEB00B03475 /* Zzzot */ = {
 			isa = PBXGroup;
 			children = (
+				8F209ABC29C51E9100B03475 /* Backend */,
+				8F209ABB29C51E8800B03475 /* Frontend */,
 				8F209A9129C51CEB00B03475 /* ZzzotApp.swift */,
 				8F209A9329C51CEB00B03475 /* ContentView.swift */,
 				8F209A9529C51CED00B03475 /* Assets.xcassets */,
@@ -125,6 +127,20 @@
 				8F209AAE29C51CED00B03475 /* ZzzotUITestsLaunchTests.swift */,
 			);
 			path = ZzzotUITests;
+			sourceTree = "<group>";
+		};
+		8F209ABB29C51E8800B03475 /* Frontend */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frontend;
+			sourceTree = "<group>";
+		};
+		8F209ABC29C51E9100B03475 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Backend;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
