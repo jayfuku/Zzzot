@@ -16,6 +16,13 @@
 		8F209AAF29C51CED00B03475 /* ZzzotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AAE29C51CED00B03475 /* ZzzotUITestsLaunchTests.swift */; };
 		8F209ABE29C51ECC00B03475 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 8F209ABD29C51ECC00B03475 /* File */; };
 		8F209AC029C51ED500B03475 /* File in Resources */ = {isa = PBXBuildFile; fileRef = 8F209ABF29C51ED500B03475 /* File */; };
+		8F209AD629C5213400B03475 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209ACF29C5213400B03475 /* Calendar.swift */; };
+		8F209AD729C5213400B03475 /* CalendarEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD029C5213400B03475 /* CalendarEvent.swift */; };
+		8F209AD829C5213400B03475 /* RecommendationAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD129C5213400B03475 /* RecommendationAlgorithm.swift */; };
+		8F209AD929C5213400B03475 /* PersonalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD229C5213400B03475 /* PersonalModel.swift */; };
+		8F209ADA29C5213400B03475 /* LocalStorageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD329C5213400B03475 /* LocalStorageRetriever.swift */; };
+		8F209ADB29C5213400B03475 /* UserSleepDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD429C5213400B03475 /* UserSleepDatabase.swift */; };
+		8F209ADC29C5213400B03475 /* UserSleepDataRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD529C5213400B03475 /* UserSleepDataRetriever.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +55,13 @@
 		8F209AAE29C51CED00B03475 /* ZzzotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZzzotUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8F209ABD29C51ECC00B03475 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 		8F209ABF29C51ED500B03475 /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		8F209ACF29C5213400B03475 /* Calendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		8F209AD029C5213400B03475 /* CalendarEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarEvent.swift; sourceTree = "<group>"; };
+		8F209AD129C5213400B03475 /* RecommendationAlgorithm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationAlgorithm.swift; sourceTree = "<group>"; };
+		8F209AD229C5213400B03475 /* PersonalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalModel.swift; sourceTree = "<group>"; };
+		8F209AD329C5213400B03475 /* LocalStorageRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorageRetriever.swift; sourceTree = "<group>"; };
+		8F209AD429C5213400B03475 /* UserSleepDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleepDatabase.swift; sourceTree = "<group>"; };
+		8F209AD529C5213400B03475 /* UserSleepDataRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleepDataRetriever.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +158,13 @@
 		8F209ABC29C51E9100B03475 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				8F209ACF29C5213400B03475 /* Calendar.swift */,
+				8F209AD029C5213400B03475 /* CalendarEvent.swift */,
+				8F209AD329C5213400B03475 /* LocalStorageRetriever.swift */,
+				8F209AD229C5213400B03475 /* PersonalModel.swift */,
+				8F209AD129C5213400B03475 /* RecommendationAlgorithm.swift */,
+				8F209AD429C5213400B03475 /* UserSleepDatabase.swift */,
+				8F209AD529C5213400B03475 /* UserSleepDataRetriever.swift */,
 				8F209ABF29C51ED500B03475 /* File */,
 			);
 			path = Backend;
@@ -282,7 +303,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F209A9429C51CEB00B03475 /* ContentView.swift in Sources */,
+				8F209ADA29C5213400B03475 /* LocalStorageRetriever.swift in Sources */,
+				8F209AD929C5213400B03475 /* PersonalModel.swift in Sources */,
+				8F209ADC29C5213400B03475 /* UserSleepDataRetriever.swift in Sources */,
+				8F209AD629C5213400B03475 /* Calendar.swift in Sources */,
+				8F209AD829C5213400B03475 /* RecommendationAlgorithm.swift in Sources */,
+				8F209AD729C5213400B03475 /* CalendarEvent.swift in Sources */,
 				8F209A9229C51CEB00B03475 /* ZzzotApp.swift in Sources */,
+				8F209ADB29C5213400B03475 /* UserSleepDatabase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
