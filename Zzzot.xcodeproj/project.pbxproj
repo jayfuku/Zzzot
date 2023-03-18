@@ -22,6 +22,7 @@
 		8F209ADA29C5213400B03475 /* LocalStorageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD329C5213400B03475 /* LocalStorageRetriever.swift */; };
 		8F209ADB29C5213400B03475 /* UserSleepDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD429C5213400B03475 /* UserSleepDatabase.swift */; };
 		8F209ADC29C5213400B03475 /* UserSleepDataRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F209AD529C5213400B03475 /* UserSleepDataRetriever.swift */; };
+		A9CB9EE629C569570017C072 /* AddEventIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9CB9EE529C569570017C072 /* AddEventIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		8F209AD429C5213400B03475 /* UserSleepDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleepDatabase.swift; sourceTree = "<group>"; };
 		8F209AD529C5213400B03475 /* UserSleepDataRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSleepDataRetriever.swift; sourceTree = "<group>"; };
 		8F209ADD29C5219700B03475 /* Zzzot.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Zzzot.entitlements; sourceTree = "<group>"; };
+		A9CB9EE529C569570017C072 /* AddEventIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				8F209ABB29C51E8800B03475 /* Frontend */,
 				8F209A9129C51CEB00B03475 /* ZzzotApp.swift */,
 				8F209A9329C51CEB00B03475 /* ContentView.swift */,
+				A9CB9EE529C569570017C072 /* AddEventIView.swift */,
 				8F209A9529C51CED00B03475 /* Assets.xcassets */,
 				8F209A9729C51CED00B03475 /* Preview Content */,
 			);
@@ -309,6 +312,7 @@
 				8F209AD729C5213400B03475 /* CalendarEvent.swift in Sources */,
 				8F209A9229C51CEB00B03475 /* ZzzotApp.swift in Sources */,
 				8F209ADB29C5213400B03475 /* UserSleepDatabase.swift in Sources */,
+				A9CB9EE629C569570017C072 /* AddEventIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
