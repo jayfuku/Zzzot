@@ -55,7 +55,7 @@ class UserCalendar : Codable, ObservableObject{
         //Add an event to the calendar given a date name and description
         //TODO: What should happen if the event already exists on that day and time?
         let event = CalendarEvent(id: id, time: date, name: name, desc: desc)
-        
+     
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .day, .month], from: date)
         let year_: Int = components.year!
@@ -86,9 +86,7 @@ class UserCalendar : Codable, ObservableObject{
         
         return self.calendar[year_!]![month_!]![day_!]!
     }
-    
-    // TODO: Do we need more detailed ways to get events?
-    
+        
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.calendar)

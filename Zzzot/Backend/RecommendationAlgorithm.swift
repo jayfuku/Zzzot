@@ -40,7 +40,6 @@ class RecommendationAlgorithm {
         let (amntsLen, timesLen) = (sleepAmnts.week.count, sleepTimes.week.count)
         let (start, stop) = self.rangeHelper(self.model.getSleepScore())
         
-        print("STARTINGSLEEPSCORE", self.model.getSleepScore())
         for i in stride(from: start, to: stop, by:0.5){
             // Increase or decrease sleep times in half hour increments
             var tempSleepAmnts = sleepAmnts.week
@@ -82,7 +81,6 @@ class RecommendationAlgorithm {
         if (stdDev > 0.75){
             consistencyDeduction += ((stdDev - 0.75) / stdDev) * 50
         }
-        print("CONSISTENCYDEDUCTION", consistencyDeduction)
         tempSleepScore -= min(40, consistencyDeduction)
     
         let recentSleep = sleepTimes[sleepTimes.count-1]
