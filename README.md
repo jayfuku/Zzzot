@@ -22,6 +22,6 @@ Designed and coded by Alvin Chen and Chris Ruan
 ## Backend
 Designed and coded by Jay Fukumoto and Justin Chen
 
-#Disclaimer
+# Disclaimer
 
 This app does not provide medical advice. No material displayed on this app is not intended to be a substitute for profressional medical advice, diagnosis, or treatments. Please consult a medical professional, physician, or qualified healthcare provider if you have any serious health concerns.
