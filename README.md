@@ -24,4 +24,4 @@ Designed and coded by Jay Fukumoto and Justin Chen
 
 # Disclaimer
 
-This app does not provide medical advice. No material displayed on this app is not intended to be a substitute for profressional medical advice, diagnosis, or treatments. Please consult a medical professional, physician, or qualified healthcare provider if you have any serious health concerns.
+This app does not provide medical advice. No material displayed on this app is not intended to be a substitute for professional medical advice, diagnosis, or treatments. Please consult your physician, qualified healthcare provider, or other relevant medical professionals if you have any serious health concerns regarding your sleep.
