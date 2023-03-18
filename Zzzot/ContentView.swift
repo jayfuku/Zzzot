@@ -11,7 +11,10 @@ import SwiftUI
 struct ContentView: View {
     @State private var isShowingPopover = false
     @State private var date = Date()
+    @StateObject var userCalendar = UserCalendar()
+    
     var body: some View {
+        let _ = userCalendar.initDateDict(date)
         NavigationView{
             TabView {
                 SleepView()
@@ -38,6 +41,7 @@ struct ContentView: View {
                                 "Pick a date to view:",
                                 selection: $date,
                                 displayedComponents: [.date]
+                                
                             )
                             .padding()
                         }
@@ -47,6 +51,7 @@ struct ContentView: View {
             }
             .opacity(1)
         }
+        .environmentObject(userCalendar)
         .padding()
     }
 }
@@ -68,13 +73,56 @@ struct SleepView: View {
 }
 
 struct CalendarView: View {
+    
+    @State private var showingAddView = false
     @State private var date = Date()
-    @State private var todoDate = Date()
-    @State private var selection = "Red"
-    let colors = ["Red", "Green", "Blue", "Black", "Tartan"]
-    @State private var username: String = ""
-    @State private var editorText: String = ""
+    
+    @EnvironmentObject var userCalendar: UserCalendar
+    
     var body: some View {
+        NavigationView {
+            VStack(alignment: .leading) {
+                Text("Score: \(Int(0))")
+                    .foregroundColor(.gray)
+                    .padding(.horizontal)
+                List {
+                    ForEach(userCalendar.getEventByDay(date)){ e in
+                        let _ = print("Justin steal the data and did not work")
+                        NavigationLink(destination: Text("\(e.desc)")) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 6){
+                                    Text(e.name)
+                                        .bold()
+                                }
+                                Spacer()
+                                Text("\(e.time)")
+                                    .foregroundColor(.gray)
+                                    .italic()
+                            }
+                        }
+                    }
+                    .onDelete(perform: deleteEvent)
+                }
+                .listStyle(.plain)
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        showingAddView.toggle()
+                    } label: {
+                        Label("Add Event", systemImage: "plus.circle")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading){
+                    EditButton()
+                }
+            }
+            .sheet(isPresented: $showingAddView){
+                AddEventView()
+            }
+        }
+        .navigationViewStyle(.stack)
+        /*
         VStack(alignment: .center, spacing: 20){
             DatePicker(
                 "Due Date",
@@ -109,9 +157,11 @@ struct CalendarView: View {
                 }
                 .shadow(radius: 1)
             }
-        }
+        }*/
         .padding()
-        
+    }
+    private func deleteEvent(offsets: IndexSet){
+        //pass
     }
 }
 
