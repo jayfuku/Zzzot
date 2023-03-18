@@ -17,7 +17,9 @@ struct ZzzotApp: App {
     
     init(){
         let typesToRead = Set([
-            HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
+            HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!,
+            HKObjectType.characteristicType(forIdentifier: .biologicalSex)!,
+            HKObjectType.characteristicType(forIdentifier: .dateOfBirth)!
         ])
         
 
@@ -93,8 +95,15 @@ struct ZzzotApp: App {
                 }
         }
         
-        //TODO: Queries happen async, need to work around it
         self.HKStore.execute(sampleQuery)
+        do {
+            try AppState.shared.personalModel.setSex(self.HKStore.biologicalSex().biologicalSex)
+            try AppState.shared.personalModel.setDOB(self.HKStore.dateOfBirthComponents())
+        }
+        catch {
+            print("Error retrieving bioglogical sex or DOB")
+        }
+        
     }
     
     private func timeBetweenDates(_ endDate: Date, _ startDate: Date) -> Double {

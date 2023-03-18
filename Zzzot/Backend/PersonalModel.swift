@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HealthKit
 
 struct sleepAmnts : Codable {
     //Struct that contains the total sleep amounts from the past week, month, and year
@@ -28,6 +29,8 @@ struct storageStruct : Codable{
     var sleepStdDev : Double
     var goodSleepAmnt : Bool
     var SleepScore : Double
+    var biologicalSex : String
+    var dateOfBirth : [Int]
 }
 
 class PersonalModel : Codable {
@@ -40,6 +43,8 @@ class PersonalModel : Codable {
     private var sleepStdDev: Double
     private var goodSleepAmnt: Bool
     private var SleepScore: Double
+    private var biologicalSex : HKBiologicalSex
+    private var dateOfBirth : DateComponents
     
     static var initialized: Bool = false
     
@@ -51,6 +56,8 @@ class PersonalModel : Codable {
         self.goodSleepAmnt = false
         self.SleepScore = 0.0
         self.sleepStdDev = 0
+        self.biologicalSex = HKBiologicalSex.notSet
+        self.dateOfBirth = DateComponents()
     }
     
     public func _clearModel(){
@@ -199,10 +206,37 @@ class PersonalModel : Codable {
         return self.SleepScore
     }
     
+    public func setSex(_ s : HKBiologicalSex) -> Void {
+        self.biologicalSex = s
+        print("Gender",self.biologicalSex.rawValue)
+    }
+    
+    public func setDOB(_ d : DateComponents) -> Void {
+        self.dateOfBirth = d
+        print("Date of birth", self.dateOfBirth)
+    }
+    
+    private func sexEnum(_ s : HKBiologicalSex) -> String{
+        switch s {
+        case HKBiologicalSex.male:
+            return "male"
+        case HKBiologicalSex.female:
+            return "female"
+        case HKBiologicalSex.other:
+            return "other"
+        default:
+            return "not set"
+        }
+    }
+    
+    private func componentToArr(_ d: DateComponents) -> [Int]{
+        return [d.month!, d.day!, d.year!]
+    }
+    
     public func encode(to encoder: Encoder) throws{
         var container = encoder.singleValueContainer()
         
-        let obj : storageStruct = storageStruct(sleepDates: self.sleepDates, sleepAmounts: self.sleepAmounts, consistentSleep: self.consistentSleep, sleepStdDev: self.sleepStdDev, goodSleepAmnt: self.goodSleepAmnt, SleepScore: self.SleepScore)
+        let obj : storageStruct = storageStruct(sleepDates: self.sleepDates, sleepAmounts: self.sleepAmounts, consistentSleep: self.consistentSleep, sleepStdDev: self.sleepStdDev, goodSleepAmnt: self.goodSleepAmnt, SleepScore: self.SleepScore, biologicalSex: self.sexEnum(self.biologicalSex), dateOfBirth: componentToArr(self.dateOfBirth))
         try container.encode(obj)
     }
     
@@ -215,5 +249,16 @@ class PersonalModel : Codable {
         self.goodSleepAmnt = obj.goodSleepAmnt
         self.SleepScore = obj.SleepScore
         self.sleepStdDev = obj.sleepStdDev
+        switch obj.biologicalSex {
+            case "male":
+                self.biologicalSex = HKBiologicalSex.male
+            case "female":
+                self.biologicalSex = HKBiologicalSex.female
+            case "other":
+                self.biologicalSex = HKBiologicalSex.other
+            default:
+                self.biologicalSex = HKBiologicalSex.notSet
+        }
+        self.dateOfBirth = DateComponents( year: obj.dateOfBirth[2], month: obj.dateOfBirth[0], day:obj.dateOfBirth[1])
     }
 }
