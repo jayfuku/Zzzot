@@ -25,7 +25,6 @@ class UserCalendar : Codable{
     
     public func addEvent(_ date: Date, _ name: String, _ desc: String){
         //Add an event to the calendar given a date name and description
-        //TODO: What should happen if the event already exists on that day and time?
         let event = CalendarEvent(id: name+desc, time: date, name: name, desc: desc)
         
         let calendar = Calendar.current
@@ -58,9 +57,7 @@ class UserCalendar : Codable{
         
         return self.calendar[year_!]![month_!]![day_!]!
     }
-    
-    // TODO: Do we need more detailed ways to get events?
-    
+        
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encode(self.calendar)

@@ -181,7 +181,6 @@ class PersonalModel : Codable {
         if (self.sleepStdDev > 0.75){
             consistencyDeduction += ((self.sleepStdDev - 0.75) / self.sleepStdDev) * 50
         }
-        print("SLEEPDATES", self.sleepDates)
         tempSleepScore -= min(40, consistencyDeduction)
         //Quantity
         // Deduct sleep score based on quantity of most recent sleep up to max of 60
@@ -208,12 +207,10 @@ class PersonalModel : Codable {
     
     public func setSex(_ s : HKBiologicalSex) -> Void {
         self.biologicalSex = s
-        print("Gender",self.biologicalSex.rawValue)
     }
     
     public func setDOB(_ d : DateComponents) -> Void {
         self.dateOfBirth = d
-        print("Date of birth", self.dateOfBirth)
     }
     
     private func sexEnum(_ s : HKBiologicalSex) -> String{
