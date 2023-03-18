@@ -17,7 +17,7 @@ class LocalStorageInterface {
         }
         
     }
-    public static func retrieveUserSleepDatabase() -> UserSleepDatabase?{
+    public static func retrieveUserSleepDatabase() -> UserSleepDatabase{
         let userDefaults = UserDefaults.standard
         let decoder = JSONDecoder()
         if let obj = userDefaults.object(forKey:"SleepDatabase") as? Data{
@@ -25,7 +25,7 @@ class LocalStorageInterface {
                 return parsedObj
             }
         }
-        return nil
+        return UserSleepDatabase()
     }
 
     public static func setCalendarDatabase(_ c : UserCalendar) -> Void {
@@ -37,7 +37,7 @@ class LocalStorageInterface {
 
     }
 
-    public static func retrieveCalendarDatabase() -> UserCalendar? {
+    public static func retrieveCalendarDatabase() -> UserCalendar {
         let userDefaults = UserDefaults.standard
         let decoder  = JSONDecoder()
         if let obj = userDefaults.object(forKey: "UserCalendar") as? Data{
@@ -45,7 +45,7 @@ class LocalStorageInterface {
                 return parsedObj
             }
         }
-        return nil
+        return UserCalendar()
     }
     
     
@@ -57,7 +57,7 @@ class LocalStorageInterface {
         }
     }
     
-    public static func retrievePersonalModel() -> PersonalModel? {
+    public static func retrievePersonalModel() -> PersonalModel {
         let userDefaults = UserDefaults.standard
         let decoder = JSONDecoder()
         if let obj = userDefaults.object(forKey: "PersonalModel") as? Data{
@@ -65,6 +65,6 @@ class LocalStorageInterface {
                 return parsedObj
             }
         }
-        return nil
+        return PersonalModel()
     }
 }
