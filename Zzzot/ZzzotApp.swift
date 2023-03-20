@@ -68,6 +68,10 @@ struct ZzzotApp: App {
                     return
                 }
                 if let result = tmpResult{
+                    if (result.count == 0) {
+                        //Do nothing if no data was able to be obtained
+                        return
+                    }
                     if let sample = result[0] as? HKCategorySample{
                         retSleepData.slept = sample.startDate
                         retSleepData.woke = sample.endDate
