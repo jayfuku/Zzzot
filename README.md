@@ -19,8 +19,12 @@ Backend: Swift
 ## Frontend
 Designed and coded by Alvin Chen and Chris Ruan
 
+https://github.com/alvinchenn/cs125project
+
 ## Backend
 Designed and coded by Jay Fukumoto and Justin Chen
+
+https://github.com/jayfuku/cs125BackendTesing
 
 # Disclaimer
 
