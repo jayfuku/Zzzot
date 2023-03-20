@@ -7,6 +7,16 @@
 
 import Foundation
 
+extension Date {
+    func dayAfter(numberDays: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: numberDays, to: self)!
+    }
+
+    func dayBefore(numberDays: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: numberDays * -1, to: self)!
+    }
+}
+
 struct SleepData : Codable{
     var Time: Double
     var slept: Date
@@ -36,8 +46,27 @@ class UserSleepDatabase : Codable{
         let year_: Int = components.year!
         let month_: Int = components.month!
         let day_: Int = components.day!
+        //if date exists
+        if let getYear = self.sleepDatabase[year_], let getMonth = getYear[month_], let getDay = getMonth[day_]{
+            return getDay
+        }
+        //default if date doesn't exist, -1 means not found
+        else{
+            return SleepData(Time: -1, slept: Date(), woke: Date())
+        }
+        //return self.sleepDatabase[year_]![month_]![day_]!
+    }
+    
+    public func averageSleep(startDate: Date, lastXDays: Int) -> Float{
+        var average: Double = 0
         
-        return self.sleepDatabase[year_]![month_]![day_]!
+        for i in 1...lastXDays{
+            let workingDay = getData(date: startDate.dayBefore(numberDays: i)).Time
+            if workingDay != -1{
+                average += workingDay
+            }
+        }
+        return Float(average)/Float(lastXDays)
     }
     
     public func addData(_ date: Date, _ data: SleepData) -> Void{

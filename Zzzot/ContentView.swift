@@ -14,7 +14,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             TabView {
-                SleepView()
+                SleepView(date: self.$date)
                     .tabItem {
                         Label("Sleep", systemImage: "powersleep")
                     }
@@ -51,18 +51,28 @@ struct ContentView: View {
     }
 }
 struct SleepView: View {
+    @Binding public var date : Date
+    
+    
     var body: some View {
-        
-        VStack {
-            Text("You slept ____ hours last night")
-            Text("This week on average you slept 5 hours")
+        VStack(alignment: .leading, spacing: 45) {
+            Text("You slept \(AppState.shared.sleepDatabase.getData(date: date).Time) hours last night.")
+                .font(.title)
+                .fontWeight(.ultraLight)
+            Text("This week on average you slept \(AppState.shared.sleepDatabase.averageSleep(startDate: date, lastXDays: 7)) hours.")
+                .font(.title)
+                .fontWeight(.ultraLight)
             
-            Text("This month on average you slept 6 hours")
+            Text("This month on average you slept \(AppState.shared.sleepDatabase.averageSleep(startDate: date, lastXDays: 30)) hours.")
+                .font(.title)
+                .fontWeight(.ultraLight)
             
-            Text("Since you started tracking sleep, you slept an average of 6 hours")
-            
-            Text("You should sleep at 1:00 AM if you want to make it to ____ tomorrow.")
-                .padding()
+            Text("This year you slept an average of \(AppState.shared.sleepDatabase.averageSleep(startDate: date, lastXDays: 365)) hours.")
+                .font(.title)
+                .fontWeight(.ultraLight)
+            Text("You should sleep at \(String(AppState.shared.recommendations?[0].1.newSleepTime ?? -1)) if you want to get the recommended amount of sleep.")
+                .font(.title)
+                .fontWeight(.ultraLight)
         }
     }
 }
