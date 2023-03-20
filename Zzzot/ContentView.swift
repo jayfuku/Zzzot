@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isShowingPopover = false
-    @State private var date = Date()
-    @StateObject var userCalendar = UserCalendar()
+    @State public var date = Date()
+    @StateObject var userCalendar = AppState.shared.userCalendar
     
     var body: some View {
         let _ = userCalendar.initDateDict(date)
@@ -21,7 +21,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Sleep", systemImage: "powersleep")
                     }
-                CalendarView()
+                CalendarView(date: self.$date)
                     .tabItem {
                         Label("Calendar", systemImage: "calendar")
                     }
@@ -75,19 +75,18 @@ struct SleepView: View {
 struct CalendarView: View {
     
     @State private var showingAddView = false
-    @State private var date = Date()
-    
-    @EnvironmentObject var userCalendar: UserCalendar
+    @Binding public var date : Date
+    @State private var refreshToggle : Bool = true
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                if (refreshToggle){}
                 Text("Score: \(Int(0))")
                     .foregroundColor(.gray)
                     .padding(.horizontal)
                 List {
-                    ForEach(userCalendar.getEventByDay(date)){ e in
-                        let _ = print("Justin steal the data and did not work")
+                    ForEach(AppState.shared.userCalendar.getEventByDay(date)){ e in
                         NavigationLink(destination: Text("\(e.desc)")) {
                             HStack {
                                 VStack(alignment: .leading, spacing: 6){
@@ -118,7 +117,7 @@ struct CalendarView: View {
                 }
             }
             .sheet(isPresented: $showingAddView){
-                AddEventView()
+                AddEventView(refreshToggle: $refreshToggle)
             }
         }
         .navigationViewStyle(.stack)

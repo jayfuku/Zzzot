@@ -9,6 +9,11 @@ import Foundation
 
 typealias calendarStorage = Dictionary<Int, Dictionary<Int, Dictionary<Int, [CalendarEvent]>>>
 
+struct calendarLocalStorage : Codable{
+    var calendar : calendarStorage
+    var eventIDCount : Int
+}
+
 class UserCalendar : Codable, ObservableObject{
     //Class representation for calendar
     //Should be singleton
@@ -24,9 +29,14 @@ class UserCalendar : Codable, ObservableObject{
         self.eventIDCount = 0
     }
     
+    public func _clearCalender() -> Void {
+        // Clear the calendar
+        self.calendar = Dictionary<Int, Dictionary<Int, Dictionary<Int, [CalendarEvent]>>>()
+    }
+    
     public func incEventID() -> String{
-        eventIDCount += 1
-        return String(eventIDCount)
+        self.eventIDCount += 1
+        return String(self.eventIDCount)
     }
     
     public func initDateDict(_ date: Date){
@@ -73,6 +83,7 @@ class UserCalendar : Codable, ObservableObject{
         }
         
         self.calendar[year_]![month_]![day_]!.append(event)
+        print(self.calendar)
     }
     
     public func getEventByDay(_ date: Date) -> [CalendarEvent]{
@@ -84,17 +95,29 @@ class UserCalendar : Codable, ObservableObject{
         let month_: Int? = components.month
         let day_: Int? = components.day
         
+        if (self.calendar[year_!] == nil){
+            return []
+        }
+        if (self.calendar[year_!]![month_!] == nil){
+            return []
+        }
+        if (self.calendar[year_!]![month_!]![day_!] == nil){
+            return []
+        }
+        
         return self.calendar[year_!]![month_!]![day_!]!
     }
         
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
-        try container.encode(self.calendar)
+        let obj : calendarLocalStorage = calendarLocalStorage(calendar: self.calendar, eventIDCount: self.eventIDCount)
+        try container.encode(obj)
     }
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        self.calendar = try container.decode(Dictionary.self)
-        self.eventIDCount = try container.decode(Int.self)
+        let obj = try container.decode(calendarLocalStorage.self)
+        self.calendar = obj.calendar
+        self.eventIDCount = obj.eventIDCount
     }
 }

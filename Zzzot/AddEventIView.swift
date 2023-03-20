@@ -17,8 +17,8 @@ struct AddEventView: View {
     @State private var editorText: String = ""
     @State private var name = ""
     @State private var calories: Double = 0
+    @Binding var refreshToggle : Bool
     @EnvironmentObject var userCalendar: UserCalendar
-
     
     var body: some View {
         Form {
@@ -61,8 +61,10 @@ struct AddEventView: View {
                 HStack{
                     Spacer()
                     Button("Submit"){
-                        userCalendar.addEvent(userCalendar.incEventID(), todoDate, username, editorText)
+                        AppState.shared.userCalendar.addEvent(AppState.shared.userCalendar.incEventID(), todoDate, username, editorText)
                         dismm()
+                        refreshToggle.toggle()
+                        username = ""
                     }
                     Spacer()
                     

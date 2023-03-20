@@ -40,6 +40,7 @@ struct ZzzotApp: App {
         WindowGroup {
             ContentView().onAppear{
                 self.queryData()
+                AppState.shared.userCalendar._clearCalender()
             }.onChange(of: scenePhase){
                 phase in
                 if phase == .background {
