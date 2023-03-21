@@ -107,6 +107,18 @@ class UserCalendar : Codable, ObservableObject{
         
         return self.calendar[year_!]![month_!]![day_!]!
     }
+    
+    public func removeEventByDayOnIndex(_ date: Date, _ index: Int){
+        // Get all events in a day
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .day, .month], from: date)
+        let year_: Int? = components.year
+        let month_: Int? = components.month
+        let day_: Int? = components.day
+        
+        self.calendar[year_!]![month_!]![day_!]!.remove(at: index)
+    }
         
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()

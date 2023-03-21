@@ -92,9 +92,6 @@ struct CalendarView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 if (refreshToggle){}
-                Text("Score: \(Int(0))")
-                    .foregroundColor(.gray)
-                    .padding(.horizontal)
                 List {
                     ForEach(AppState.shared.userCalendar.getEventByDay(date)){ e in
                         NavigationLink(destination: Text("\(e.desc)")) {
@@ -110,7 +107,10 @@ struct CalendarView: View {
                             }
                         }
                     }
-                    .onDelete(perform: deleteEvent)
+                    .onDelete{ offsets in
+                        AppState.shared.userCalendar.removeEventByDayOnIndex(date, offsets.first!)
+                        refreshToggle.toggle()
+                    }
                 }
                 .listStyle(.plain)
             }
@@ -131,46 +131,7 @@ struct CalendarView: View {
             }
         }
         .navigationViewStyle(.stack)
-        /*
-        VStack(alignment: .center, spacing: 20){
-            DatePicker(
-                "Due Date",
-                selection: $todoDate,
-                displayedComponents: [.date]
-            )
-            HStack{
-                Text("Category")
-                Spacer()
-                Picker("Select a paint color", selection: $selection) {
-                    ForEach(colors, id: \.self) {
-                        Text($0)
-                    }
-                }
-                .pickerStyle(.menu)
-            }
-            
-            HStack{
-                Text("Task")
-                Spacer()
-                TextField(
-                    "Go to class at...",
-                    text: $username
-                )
-                .textFieldStyle(.roundedBorder)
-            }
-            HStack{
-                Text("Notes")
-                ZStack {
-                    TextEditor(text: $editorText)
-                    Text(editorText).opacity(0).padding(.all,8)
-                }
-                .shadow(radius: 1)
-            }
-        }*/
         .padding()
-    }
-    private func deleteEvent(offsets: IndexSet){
-        //pass
     }
 }
 
