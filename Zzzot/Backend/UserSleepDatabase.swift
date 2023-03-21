@@ -59,14 +59,45 @@ class UserSleepDatabase : Codable{
     
     public func averageSleep(startDate: Date, lastXDays: Int) -> Float{
         var average: Double = 0
+        var numDays: Int = 0
         
         for i in 1...lastXDays{
             let workingDay = getData(date: startDate.dayBefore(numberDays: i)).Time
             if workingDay != -1{
                 average += workingDay
+                numDays += 1
             }
         }
-        return Float(average)/Float(lastXDays)
+        if numDays != 0{
+            return Float(average)/Float(numDays)
+        }
+        else{
+            return -1
+        }
+        
+    }
+    
+    public var stringTime: String{
+        let time : Double = AppState.shared.recommendations?[0].1.newSleepTime ?? -1
+        let hour = Int(time)
+        let minute = Int((time-Double(hour))) * 60
+        if hour > 12{
+            if minute == 0{
+                return "\(hour - 12):\(minute)0 PM"
+            }
+            else{
+                return "\(hour - 12):\(minute) PM"
+            }
+        }
+        else{
+            if minute == 0{
+                return "\(hour):\(minute)0 AM"
+            }
+            else{
+                return "\(hour):\(minute) AM"
+            }
+        }
+        
     }
     
     public func addData(_ date: Date, _ data: SleepData) -> Void{

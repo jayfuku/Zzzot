@@ -70,7 +70,7 @@ struct SleepView: View {
             Text("This year you slept an average of \(AppState.shared.sleepDatabase.averageSleep(startDate: date, lastXDays: 365)) hours.")
                 .font(.title)
                 .fontWeight(.ultraLight)
-            Text("You should sleep at \(String(AppState.shared.recommendations?[0].1.newSleepTime ?? -1)) if you want to get the recommended amount of sleep.")
+            Text("You should sleep at \(AppState.shared.sleepDatabase.stringTime) if you want to get the recommended amount of sleep.")
                 .font(.title)
                 .fontWeight(.ultraLight)
         }
