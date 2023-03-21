@@ -61,6 +61,9 @@ struct SleepView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {
+            Text("Sleep Score: \(Int(AppState.shared.personalModel.getSleepScore()))")
+                .font(.title)
+                .fontWeight(.ultraLight)
             Text("You slept \(String(format: "%.2f", AppState.shared.sleepDatabase.getData(date: date).Time)) hours last night.")
                 .font(.title)
                 .fontWeight(.ultraLight)
