@@ -60,8 +60,7 @@ class UserSleepDatabase : Codable{
     public func averageSleep(startDate: Date, lastXDays: Int) -> String{
         var average: Double = 0
         var numDays: Int = 0
-        
-        for i in 1...lastXDays{
+        for i in 0...lastXDays{
             let workingDay = getData(date: startDate.dayBefore(numberDays: i)).Time
             if workingDay != -1{
                 average += workingDay

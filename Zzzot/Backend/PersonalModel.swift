@@ -227,6 +227,9 @@ class PersonalModel : Codable {
     }
     
     private func componentToArr(_ d: DateComponents) -> [Int]{
+        if (d.month == nil || d.day == nil || d.year == nil){
+            return [-1,-1,-1]
+        }
         return [d.month!, d.day!, d.year!]
     }
     
