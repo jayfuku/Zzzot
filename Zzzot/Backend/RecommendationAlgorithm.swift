@@ -46,14 +46,14 @@ class RecommendationAlgorithm {
             tempSleepAmnts.removeFirst(1)
             tempSleepAmnts.append(sleepAmnts.week[amntsLen-1]+i)
             var tempSleepScore = self.simulateSleepScore(tempSleepAmnts, sleepTimes.week)
-            recs.append((recommendations.moreSleep, recommendationData(incDecSleep: i), tempSleepScore))
+            recs.append((recommendations.moreSleep, recommendationData(newSleepTime: sleepTimes.week[timesLen-1]+i), tempSleepScore))
             
             tempSleepAmnts = sleepAmnts.week
             tempSleepAmnts.removeFirst(1)
             tempSleepAmnts.append(sleepAmnts.week[amntsLen-1]-i)
 
             tempSleepScore = self.simulateSleepScore(tempSleepAmnts, sleepTimes.week)
-            recs.append((recommendations.lessSleep, recommendationData(incDecSleep: -i), tempSleepScore))
+            recs.append((recommendations.lessSleep, recommendationData(newSleepTime: sleepTimes.week[timesLen-1]-i), tempSleepScore))
             
             var tempSleepTimes = sleepTimes.week
             tempSleepTimes.removeFirst(1)
