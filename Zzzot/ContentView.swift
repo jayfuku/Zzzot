@@ -56,7 +56,7 @@ struct SleepView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 45) {
-            Text("You slept \(AppState.shared.sleepDatabase.getData(date: date).Time) hours last night.")
+            Text("You slept \(String(format: "%.2f", AppState.shared.sleepDatabase.getData(date: date).Time)) hours last night.")
                 .font(.title)
                 .fontWeight(.ultraLight)
             Text("This week on average you slept \(AppState.shared.sleepDatabase.averageSleep(startDate: date, lastXDays: 7)) hours.")
