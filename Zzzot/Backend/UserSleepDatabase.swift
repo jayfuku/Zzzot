@@ -79,26 +79,31 @@ class UserSleepDatabase : Codable{
     
     public var stringTime: String{
         let time : Double = AppState.shared.recommendations?[0].1.newSleepTime ?? -1
-        let hour = Int(time)
+        var hour = Int(time)
         let minute = Int((time-Double(hour)) * 60)
+        
+        //PM
         if hour > 12{
+            hour -= 12
             if minute == 0{
-                return "\(hour - 12):\(minute)0 PM"
+                return "\(hour):\(minute)0 PM"
             }
             else{
-                return "\(hour - 12):\(minute) PM"
+                return "\(hour):\(minute) PM"
             }
+        }
+        //Midnight adjustment
+        else if hour == 0{
+            hour = 12
+        }
+        if minute == 0{
+            return "\(hour):\(minute)0 AM"
         }
         else{
-            if minute == 0{
-                return "\(hour):\(minute)0 AM"
-            }
-            else{
-                return "\(hour):\(minute) AM"
-            }
+            return "\(hour):\(minute) AM"
         }
-        
     }
+
     
     public func addData(_ date: Date, _ data: SleepData) -> Void{
         let calendar = Calendar.current
